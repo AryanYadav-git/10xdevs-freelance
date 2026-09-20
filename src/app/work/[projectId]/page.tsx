@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
-import { getProjectById, site } from '../data/content'
-import './ProjectDetail.css'
+'use client'
 
-export function ProjectDetail() {
-  const { projectId } = useParams<{ projectId: string }>()
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
+import { getProjectById, site } from '@/data/content'
+import './project-detail.css'
+
+export default function ProjectDetailPage() {
+  const params = useParams<{ projectId: string }>()
+  const router = useRouter()
+  const projectId = params.projectId
   const project = projectId ? getProjectById(projectId) : undefined
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -13,8 +18,14 @@ export function ProjectDetail() {
     setActiveIndex(0)
   }, [projectId])
 
+  useEffect(() => {
+    if (!project || project.images.length === 0) {
+      router.replace('/#work')
+    }
+  }, [project, router])
+
   if (!project || project.images.length === 0) {
-    return <Navigate to="/#work" replace />
+    return null
   }
 
   const activeImage = project.images[activeIndex] ?? project.images[0]
@@ -22,7 +33,7 @@ export function ProjectDetail() {
   return (
     <article className="case">
       <div className="container case__top">
-        <Link className="case__back" to="/#work">
+        <Link className="case__back" href="/#work">
           Back to work
         </Link>
 
@@ -109,7 +120,7 @@ export function ProjectDetail() {
 
         <div className="case__cta">
           <p>Have a similar build in mind?</p>
-          <Link className="btn btn-primary" to={site.meetingUrl}>
+          <Link className="btn btn-primary" href={site.meetingUrl}>
             Schedule a meeting
           </Link>
         </div>

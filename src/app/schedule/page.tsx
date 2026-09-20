@@ -1,6 +1,8 @@
+'use client'
+
 import { useState, type SubmitEvent } from 'react'
-import { Link } from 'react-router-dom'
-import './ScheduleMeeting.css'
+import Link from 'next/link'
+import './schedule.css'
 
 type FormState = {
   need: string
@@ -18,7 +20,7 @@ const emptyForm: FormState = {
   phone: '',
 }
 
-export function ScheduleMeeting() {
+export default function ScheduleMeetingPage() {
   const [form, setForm] = useState<FormState>(emptyForm)
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
   const [error, setError] = useState('')
@@ -72,7 +74,7 @@ export function ScheduleMeeting() {
     <section className="schedule section">
       <div className="container schedule__layout">
         <div className="schedule__intro">
-          <Link className="schedule__back" to="/">
+          <Link className="schedule__back" href="/">
             Back home
           </Link>
           <span className="section-label">Schedule a meeting</span>

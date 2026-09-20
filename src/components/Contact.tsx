@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { site } from '../data/content'
+import Link from 'next/link'
+import { site } from '@/data/content'
 import './Contact.css'
 
 export function Contact() {
@@ -17,7 +17,7 @@ export function Contact() {
         </div>
 
         <div className="contact__actions">
-          <Link className="btn btn-primary" to={site.meetingUrl}>
+          <Link className="btn btn-primary" href={site.meetingUrl}>
             Schedule a meeting
           </Link>
           <p className="contact__note">{site.location}</p>

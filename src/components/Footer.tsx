@@ -1,4 +1,4 @@
-import { site } from '../data/content'
+import { site } from '@/data/content'
 import './Footer.css'
 
 export function Footer() {

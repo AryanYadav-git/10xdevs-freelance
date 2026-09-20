@@ -1,6 +1,8 @@
+'use client'
+
 import { useEffect, useState, type SubmitEvent } from 'react'
-import { Link } from 'react-router-dom'
-import './Admin.css'
+import Link from 'next/link'
+import './admin.css'
 
 export type MeetingRequest = {
   id: string
@@ -31,10 +33,11 @@ function readStoredToken() {
   }
 }
 
-export function Admin() {
+export default function AdminPage() {
   const [token, setToken] = useState(readStoredToken)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [loginError, setLoginError] = useState('')
   const [loginStatus, setLoginStatus] = useState<'idle' | 'submitting'>('idle')
 
@@ -129,7 +132,7 @@ export function Admin() {
     return (
       <section className="admin section">
         <div className="container admin__login-wrap">
-          <Link className="admin__back" to="/">
+          <Link className="admin__back" href="/">
             Back home
           </Link>
           <span className="section-label">Admin</span>
@@ -152,15 +155,46 @@ export function Admin() {
 
             <label className="admin__field">
               <span>Password</span>
-              <input
-                type="password"
-                name="password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                placeholder="••••••••"
-                autoComplete="current-password"
-                required
-              />
+              <div className="admin__password">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="••••••••"
+                  autoComplete="current-password"
+                  required
+                />
+                <button
+                  type="button"
+                  className="admin__password-toggle"
+                  onClick={() => setShowPassword((current) => !current)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  aria-pressed={showPassword}
+                >
+                  {showPassword ? (
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M3 3l18 18M10.6 10.6a2.5 2.5 0 003.5 3.5M9.9 5.1A10.4 10.4 0 0112 4.8c5 0 9.3 3.2 10.8 7.2a11.4 11.4 0 01-3.2 4.4M6.1 6.1A11.3 11.3 0 001.2 12c1.5 4 5.8 7.2 10.8 7.2 1.6 0 3.1-.3 4.5-.9"
+                        stroke="currentColor"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M2.2 12C3.7 8 8 4.8 12 4.8S20.3 8 21.8 12C20.3 16 16 19.2 12 19.2S3.7 16 2.2 12z"
+                        stroke="currentColor"
+                        strokeWidth="1.7"
+                        strokeLinejoin="round"
+                      />
+                      <circle cx="12" cy="12" r="3.2" stroke="currentColor" strokeWidth="1.7" />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </label>
 
             {loginError ? (
@@ -183,7 +217,7 @@ export function Admin() {
       <div className="container">
         <div className="admin__header">
           <div>
-            <Link className="admin__back" to="/">
+            <Link className="admin__back" href="/">
               Back home
             </Link>
             <span className="section-label">Admin</span>

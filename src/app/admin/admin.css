@@ -98,6 +98,36 @@
   background: var(--bg);
 }
 
+.admin__password {
+  position: relative;
+}
+
+.admin__password input {
+  padding-right: 3rem;
+}
+
+.admin__password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.55rem;
+  transform: translateY(-50%);
+  display: inline-grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: var(--muted);
+  transition: color 0.2s var(--ease);
+}
+
+.admin__password-toggle:hover {
+  color: var(--ink);
+}
+
+.admin__password-toggle svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
 .admin__login .btn {
   justify-self: start;
   margin-top: 0.25rem;

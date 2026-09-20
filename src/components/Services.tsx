@@ -1,4 +1,4 @@
-import { services } from '../data/content'
+import { services } from '@/data/content'
 import './Services.css'
 
 export function Services() {

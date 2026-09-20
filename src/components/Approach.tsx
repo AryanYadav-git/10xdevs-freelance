@@ -1,4 +1,4 @@
-import { approachPoints } from '../data/content'
+import { approachPoints } from '@/data/content'
 import './Approach.css'
 
 export function Approach() {

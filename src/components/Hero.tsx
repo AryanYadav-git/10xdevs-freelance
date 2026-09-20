@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { site } from '../data/content'
+import Link from 'next/link'
+import { site } from '@/data/content'
 import './Hero.css'
 
 export function Hero() {
@@ -41,7 +41,7 @@ export function Hero() {
           Build & Launch Website and That Actually Make Money
         </p>
         <div className="hero__actions reveal reveal-delay-3">
-          <Link className="btn btn-primary" to={site.meetingUrl}>
+          <Link className="btn btn-primary" href={site.meetingUrl}>
             Schedule a meeting
           </Link>
           <a className="btn btn-ghost hero__ghost" href="/#work">

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { projects } from '../data/content'
+import Link from 'next/link'
+import { projects } from '@/data/content'
 import './Projects.css'
 
 export function Projects() {
@@ -18,7 +18,7 @@ export function Projects() {
             <article key={project.id} className="project">
               <Link
                 className="project__media"
-                to={`/work/${project.id}`}
+                href={`/work/${project.id}`}
                 aria-label={`View case study: ${project.title}`}
               >
                 <img
@@ -35,7 +35,7 @@ export function Projects() {
                   <span>{project.year}</span>
                 </div>
                 <h3>
-                  <Link className="project__title-link" to={`/work/${project.id}`}>
+                  <Link className="project__title-link" href={`/work/${project.id}`}>
                     {project.title}
                   </Link>
                 </h3>
@@ -53,7 +53,7 @@ export function Projects() {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                  <Link className="project__open" to={`/work/${project.id}`}>
+                  <Link className="project__open" href={`/work/${project.id}`}>
                     View case study
                   </Link>
                 </div>
