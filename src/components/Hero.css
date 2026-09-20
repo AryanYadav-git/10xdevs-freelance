@@ -31,17 +31,6 @@
   mix-blend-mode: multiply;
 }
 
-[data-theme='dark'] .hero__veil {
-  opacity: 0.55;
-  mix-blend-mode: normal;
-  background: color-mix(in srgb, var(--hero-plane) 78%, #000 22%);
-}
-
-[data-theme='dark'] .hero__image {
-  opacity: 0.22;
-  mix-blend-mode: multiply;
-}
-
 .hero__content {
   position: relative;
   z-index: 1;

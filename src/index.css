@@ -21,22 +21,6 @@
   --nav-h: 4.25rem;
 }
 
-[data-theme='dark'] {
-  color-scheme: dark;
-  --bg: #090a0b;
-  --bg-elevated: #121416;
-  --ink: #eceff2;
-  --muted: #9aa1aa;
-  --line: #2a2e34;
-  --primary: #d6ff4a;
-  --primary-ink: #0b0d10;
-  --surface-contrast: #eceff2;
-  --surface-contrast-ink: #090a0b;
-  --hero-plane: #d6ff4a;
-  --hero-ink: #0b0d10;
-  --focus: #d6ff4a;
-}
-
 *,
 *::before,
 *::after {

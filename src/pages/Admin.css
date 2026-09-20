@@ -118,10 +118,6 @@
   color: #a11f2c;
 }
 
-[data-theme='dark'] .admin__error {
-  color: #ff8a96;
-}
-
 .admin__table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
