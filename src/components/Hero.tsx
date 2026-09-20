@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { site } from '../data/content'
 import './Hero.css'
 
@@ -23,9 +24,9 @@ export function Hero() {
           and custom web apps — end to end, with craft that holds up in production.
         </p>
         <div className="hero__actions reveal reveal-delay-3">
-          <a className="btn btn-primary" href={site.meetingUrl} target="_blank" rel="noreferrer">
+          <Link className="btn btn-primary" to={site.meetingUrl}>
             Schedule a meeting
-          </a>
+          </Link>
           <a className="btn btn-ghost hero__ghost" href="/#work">
             View selected work
           </a>

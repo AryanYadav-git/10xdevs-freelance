@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { site } from '../data/content'
 import './Contact.css'
 
@@ -16,9 +17,9 @@ export function Contact() {
         </div>
 
         <div className="contact__actions">
-          <a className="btn btn-primary" href={site.meetingUrl} target="_blank" rel="noreferrer">
+          <Link className="btn btn-primary" to={site.meetingUrl}>
             Schedule a meeting
-          </a>
+          </Link>
           <a className="contact__email" href={`mailto:${site.email}`}>
             {site.email}
           </a>

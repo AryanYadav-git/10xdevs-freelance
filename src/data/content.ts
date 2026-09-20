@@ -3,7 +3,8 @@ import projectsData from './projects.json'
 export const site = {
   name: '10xdevs',
   role: 'Full Stack Developer',
-  meetingUrl: 'https://cal.com/',
+  email: 'hello@10xdevs.dev',
+  meetingUrl: '/schedule',
   location: 'Available worldwide',
 }
 
@@ -38,6 +39,12 @@ export const services = [
     title: 'Custom web apps',
     description:
       'Internal tools and product UIs: dashboards, workflows, role-based access, and integrations that fit how you work.',
+  },
+  {
+    id: 'agents',
+    title: 'AI agents',
+    description:
+      'Custom agents wired into your product or ops: tools, workflows, and handoff to humans where it matters.',
   },
 ] as const
 

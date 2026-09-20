@@ -109,9 +109,9 @@ export function ProjectDetail() {
 
         <div className="case__cta">
           <p>Have a similar build in mind?</p>
-          <a className="btn btn-primary" href={site.meetingUrl} target="_blank" rel="noreferrer">
+          <Link className="btn btn-primary" to={site.meetingUrl}>
             Schedule a meeting
-          </a>
+          </Link>
         </div>
       </div>
     </article>
