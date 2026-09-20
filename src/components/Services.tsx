@@ -6,7 +6,7 @@ export function Services() {
     <section className="section services" id="services">
       <div className="container">
         <span className="section-label">Services</span>
-        <h2 className="section-title">What I ship</h2>
+        <h2 className="section-title">What we ship</h2>
         <p className="section-lede">
           Full-stack delivery across marketing, commerce, and internal software —
           from first architecture decisions through launch.

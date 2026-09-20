@@ -3,7 +3,6 @@ import projectsData from './projects.json'
 export const site = {
   name: '10xdevs',
   role: 'Full Stack Developer',
-  email: 'hello@10xdevs.dev',
   meetingUrl: '/schedule',
   location: 'Available worldwide',
 }

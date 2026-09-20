@@ -28,20 +28,6 @@
   color: var(--primary-ink);
 }
 
-.contact__email {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
-  letter-spacing: -0.03em;
-  border-bottom: 1px solid color-mix(in srgb, var(--surface-contrast-ink) 35%, transparent);
-  padding-bottom: 0.15rem;
-  transition: border-color 0.25s var(--ease);
-}
-
-.contact__email:hover {
-  border-color: var(--primary);
-}
-
 .contact__note {
   font-size: 0.92rem;
   color: color-mix(in srgb, var(--surface-contrast-ink) 60%, transparent);

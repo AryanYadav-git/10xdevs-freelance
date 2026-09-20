@@ -20,9 +20,6 @@ export function Contact() {
           <Link className="btn btn-primary" to={site.meetingUrl}>
             Schedule a meeting
           </Link>
-          <a className="contact__email" href={`mailto:${site.email}`}>
-            {site.email}
-          </a>
           <p className="contact__note">{site.location}</p>
         </div>
       </div>
