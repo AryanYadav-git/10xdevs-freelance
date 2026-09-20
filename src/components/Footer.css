@@ -1,0 +1,29 @@
+.footer {
+  padding: 1.75rem 0 2.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.footer__brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.footer__copy {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (min-width: 720px) {
+  .footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}

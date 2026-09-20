@@ -1,0 +1,56 @@
+.contact__panel {
+  display: grid;
+  gap: 2.5rem;
+  padding: clamp(2rem, 5vw, 3rem);
+  background: var(--surface-contrast);
+  color: var(--surface-contrast-ink);
+}
+
+.contact .section-label,
+.contact .section-lede {
+  color: color-mix(in srgb, var(--surface-contrast-ink) 65%, transparent);
+}
+
+.contact__title {
+  max-width: 12ch;
+  color: var(--surface-contrast-ink);
+}
+
+.contact__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.contact .btn-primary {
+  background: var(--primary);
+  color: var(--primary-ink);
+}
+
+.contact__email {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  letter-spacing: -0.03em;
+  border-bottom: 1px solid color-mix(in srgb, var(--surface-contrast-ink) 35%, transparent);
+  padding-bottom: 0.15rem;
+  transition: border-color 0.25s var(--ease);
+}
+
+.contact__email:hover {
+  border-color: var(--primary);
+}
+
+.contact__note {
+  font-size: 0.92rem;
+  color: color-mix(in srgb, var(--surface-contrast-ink) 60%, transparent);
+}
+
+@media (min-width: 860px) {
+  .contact__panel {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: end;
+    gap: 3rem;
+  }
+}

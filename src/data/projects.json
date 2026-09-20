@@ -1,0 +1,121 @@
+[
+  {
+    
+      "id": "phayz",
+      "title": "PHAYZ",
+      "category": "E-commerce",
+      "year": "2026",
+      "client": "PHAYZ",
+      "summary": "A custom Next.js storefront for a t-shirt and hoodie brand, built with an in-house product customization tool, Razorpay payments, and a purpose-built admin CMS for catalog, orders, and customer management.",
+      "services": [
+        "Full-Stack Development",
+        "Custom Admin CMS",
+        "Payment Integration",
+        "Product Customization Tool"
+      ],
+      "challenge": "The brand needed more than a standard storefront — customers wanted to personalize hoodies with their own designs across front, back, and side print zones. Off-the-shelf platforms couldn't support this without heavy workarounds, and a generic CMS wasn't flexible enough for a product catalog built around configurable print zones and customer uploads.",
+      "solution": "I built the storefront end-to-end in Next.js, with a canvas-based customization tool letting customers upload, position, rotate, and flip artwork within fixed print zones per garment. Payments run through Razorpay with webhook-verified order confirmation, automatic invoicing, and email notifications. A custom admin CMS handles the full operational surface — products, images, pricing, customer records, orders, wishlists, tags, and payment reconciliation.",
+      "impact": [
+        "A customization flow customers can use without design experience",
+        "Reliable payment-to-fulfillment pipeline with webhook-verified order status",
+        "Single admin dashboard covering catalog, orders, and customers",
+        "A reusable CMS architecture ready to extend to future client projects"
+      ],
+      "outcomes": [
+        "Razorpay payment flow with webhook verification and automated invoicing",
+        "Purpose-built admin CMS for products, orders, and customers",
+        "SEO-optimized product and category pages"
+      ],
+    "stack": ["Next.js", "WordPress CMS", "Razorpay"],
+    "images": [
+      {
+        "src": "/phayz-home.png",
+        "alt": "Tej Computer Services homepage"
+      },
+      {
+        "src": "/tej-products.png",
+        "alt": "Tej Computer Services product listing"
+      },
+      {
+        "src": "/tej-product-details.png",
+        "alt": "Tej Computer Services product detail page"
+      }
+    ]
+  },
+  {
+    "id": "tejcomputer-redesign",
+    "title": "Tej Computer Services",
+    "category": "E-commerce redesign",
+    "year": "2026",
+    "client": "Tej Computer Services",
+    "summary": "One of the Largest trusted distributors for premium computer hardware, gaming accessories and tech solutions in the entire state of Jharkhand, India",
+    "services": [
+      "Redesign",
+      "Headless WordPress Backend",
+      "Next.js storefront",
+      "Checkout UX"
+    ],
+    "challenge": "The WordPress theme was slow, hard to extend, and fighting the brand. Merchandisers relied on familiar CMS workflows, but shoppers hit sluggish pages and a confusing path to purchase. A full platform migration was off the table — content and catalog needed to stay in WordPress.",
+    "solution": "WordPress stayed as the backend for products, content, and editorial control. I rebuilt the customer-facing experience in Next.js with synced catalog data, clearer product discovery, and a tighter checkout path. The team kept their publishing habits; customers got a faster, calmer storefront.",
+    "impact": [
+      "Noticeably faster browse and product pages",
+      "Clearer path from discovery to checkout",
+      "Merchandising workflows unchanged for the client team",
+      "A frontend stack ready for future campaigns and A/B tests"
+    ],
+    "outcomes": [
+      "Headless WordPress content and catalog sync",
+      "Faster product discovery and checkout path",
+      "CMS workflows unchanged for the client team"
+    ],
+    "stack": ["Next.js", "WordPress CMS", "Razorpay"],
+    "images": [
+      {
+        "src": "/tej-home.png",
+        "alt": "Tej Computer Services homepage"
+      },
+      {
+        "src": "/tej-products.png",
+        "alt": "Tej Computer Services product listing"
+      },
+      {
+        "src": "/tej-product-details.png",
+        "alt": "Tej Computer Services product detail page"
+      }
+    ]
+  },
+  {
+    "id": "kghrc",
+    "title": "Kanke General Hospital & Research Centre",
+    "category": "Brand website",
+    "year": "2025",
+    "client": "Kanke General Hospital & Research Centre",
+    "summary": "A modern hospital website focused on trust, clarity, and conversion — with a prominent appointment path, department discovery, and content the clinical team can keep current.",
+    "services": [
+      "Brand website",
+      "Appointment UX",
+      "CMS content architecture",
+      "Responsive UI"
+    ],
+    "challenge": "The hospital needed a digital presence that felt as capable as their care — not a generic template. Patients had to find doctors, services, and a clear way to book or enquire quickly, while staff needed a site that stayed professional across mobile and desktop without constant developer edits for routine updates.",
+    "solution": "I designed and built a dark, cinematic healthcare site with a strong hero, glass-style enquiry form, and direct appointment CTAs. Navigation covers departments, doctors, gallery, and contact in a calm hierarchy. The layout emphasizes immediate action — book or submit a query — while imagery and typography establish clinical trust.",
+    "impact": [
+      "Clear first-screen path to book or enquire",
+      "Mobile-ready experience for patients searching on the go",
+      "A visual identity that matches modern hospital standards",
+      "Structured pages ready for doctors, services, and content growth"
+    ],
+    "outcomes": [
+      "Hero-led brand site with appointment and enquiry flows",
+      "Department and doctor-focused information architecture",
+      "Polished responsive UI tuned for healthcare trust"
+    ],
+    "stack": ["Next.js", "TypeScript", "CMS"],
+    "images": [
+      {
+        "src": "/kghrc.png",
+        "alt": "Kanke General Hospital & Research Centre homepage"
+      }
+    ]
+  }
+]
