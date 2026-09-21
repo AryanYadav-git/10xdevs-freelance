@@ -96,28 +96,6 @@ export default function ScheduleMeetingPage() {
         ) : (
           <form className="schedule__form" onSubmit={handleSubmit} noValidate>
             <label className="schedule__field">
-              <span>What do you need?</span>
-              <textarea
-                name="need"
-                rows={4}
-                value={form.need}
-                onChange={(event) => updateField('need', event.target.value)}
-                placeholder="Site rebuild, ecommerce, custom app, WordPress headless…"
-              />
-            </label>
-
-            <label className="schedule__field">
-              <span>What’s your vision?</span>
-              <textarea
-                name="vision"
-                rows={4}
-                value={form.vision}
-                onChange={(event) => updateField('vision', event.target.value)}
-                placeholder="Where this should go, who it’s for, what success looks like…"
-              />
-            </label>
-
-            <label className="schedule__field">
               <span>Company name</span>
               <input
                 type="text"
@@ -160,6 +138,28 @@ export default function ScheduleMeetingPage() {
                 />
               </label>
             </div>
+
+            <label className="schedule__field">
+              <span>What do you need?</span>
+              <textarea
+                name="need"
+                rows={4}
+                value={form.need}
+                onChange={(event) => updateField('need', event.target.value)}
+                placeholder="Site rebuild, ecommerce, custom app, WordPress headless…"
+              />
+            </label>
+
+            <label className="schedule__field">
+              <span>What’s your vision?</span>
+              <textarea
+                name="vision"
+                rows={4}
+                value={form.vision}
+                onChange={(event) => updateField('vision', event.target.value)}
+                placeholder="Where this should go, who it’s for, what success looks like…"
+              />
+            </label>
 
             {error ? (
               <p className="schedule__error" role="alert">
