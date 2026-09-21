@@ -1,5 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import { getDb } from '@/lib/mongodb'
 
 export type MeetingRequest = {
   id: string
@@ -13,50 +12,73 @@ export type MeetingRequest = {
   respondedAt?: string
 }
 
-function getMeetingsPath() {
-  if (process.env.VERCEL) {
-    return join('/tmp', 'meetings.json')
-  }
-  return join(process.cwd(), 'data', 'meetings.json')
-}
+type MeetingDocument = MeetingRequest & { _id?: unknown }
 
-function ensureMeetingsFile() {
-  const file = getMeetingsPath()
-  const dir = dirname(file)
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true })
-  }
-  if (!existsSync(file)) {
-    writeFileSync(file, '[]\n', 'utf8')
-  }
-}
+const COLLECTION = 'meetings'
 
-export function readMeetings(): MeetingRequest[] {
-  ensureMeetingsFile()
-  try {
-    const raw = readFileSync(getMeetingsPath(), 'utf8')
-    const parsed = JSON.parse(raw) as unknown
-    if (!Array.isArray(parsed)) return []
-    return parsed.map((item) => {
-      const meeting = item as Partial<MeetingRequest>
-      return {
-        id: String(meeting.id ?? ''),
-        createdAt: String(meeting.createdAt ?? ''),
-        name: String(meeting.name ?? ''),
-        phone: String(meeting.phone ?? ''),
-        company: String(meeting.company ?? ''),
-        need: String(meeting.need ?? ''),
-        vision: String(meeting.vision ?? ''),
-        responded: Boolean(meeting.responded),
-        respondedAt: meeting.respondedAt ? String(meeting.respondedAt) : undefined,
-      }
-    })
-  } catch {
-    return []
+function toMeeting(doc: MeetingDocument): MeetingRequest {
+  return {
+    id: String(doc.id ?? ''),
+    createdAt: String(doc.createdAt ?? ''),
+    name: String(doc.name ?? ''),
+    phone: String(doc.phone ?? ''),
+    company: String(doc.company ?? ''),
+    need: String(doc.need ?? ''),
+    vision: String(doc.vision ?? ''),
+    responded: Boolean(doc.responded),
+    respondedAt: doc.respondedAt ? String(doc.respondedAt) : undefined,
   }
 }
 
-export function writeMeetings(meetings: MeetingRequest[]) {
-  ensureMeetingsFile()
-  writeFileSync(getMeetingsPath(), `${JSON.stringify(meetings, null, 2)}\n`, 'utf8')
+async function meetingsCollection() {
+  const db = await getDb()
+  return db.collection<MeetingDocument>(COLLECTION)
+}
+
+export async function listMeetings(): Promise<MeetingRequest[]> {
+  const collection = await meetingsCollection()
+  const docs = await collection.find({}).sort({ createdAt: -1 }).toArray()
+  return docs.map(toMeeting)
+}
+
+export async function createMeeting(
+  input: Omit<MeetingRequest, 'responded' | 'respondedAt'> & {
+    responded?: boolean
+    respondedAt?: string
+  },
+): Promise<MeetingRequest> {
+  const entry: MeetingRequest = {
+    ...input,
+    responded: input.responded ?? false,
+    respondedAt: input.respondedAt,
+  }
+
+  const collection = await meetingsCollection()
+  await collection.insertOne({ ...entry })
+  return entry
+}
+
+export async function updateMeetingResponded(
+  id: string,
+  responded: boolean,
+): Promise<MeetingRequest | null> {
+  const collection = await meetingsCollection()
+  const respondedAt = responded ? new Date().toISOString() : undefined
+
+  const result = await collection.findOneAndUpdate(
+    { id },
+    responded
+      ? { $set: { responded: true, respondedAt } }
+      : { $set: { responded: false }, $unset: { respondedAt: '' } },
+    { returnDocument: 'after' },
+  )
+
+  if (!result) return null
+  return toMeeting(result)
+}
+
+export async function deleteMeeting(id: string): Promise<boolean> {
+  const collection = await meetingsCollection()
+  const result = await collection.deleteOne({ id })
+  return result.deletedCount > 0
 }

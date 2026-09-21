@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { NextResponse } from 'next/server'
 import { getBearerToken, verifyAdminToken } from '@/lib/auth'
-import { readMeetings, writeMeetings, type MeetingRequest } from '@/lib/meetings'
+import { createMeeting, listMeetings, type MeetingRequest } from '@/lib/meetings'
 
 export const runtime = 'nodejs'
 
@@ -11,7 +11,13 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Unauthorized.' }, { status: 401 })
   }
 
-  return NextResponse.json(readMeetings())
+  try {
+    const meetings = await listMeetings()
+    return NextResponse.json(meetings)
+  } catch (error) {
+    console.error('Failed to list meetings', error)
+    return NextResponse.json({ error: 'Could not load meeting requests.' }, { status: 500 })
+  }
 }
 
 export async function POST(request: Request) {
@@ -30,20 +36,21 @@ export async function POST(request: Request) {
     )
   }
 
-  const meetings = readMeetings()
-  const entry: MeetingRequest = {
-    id: randomUUID(),
-    createdAt: new Date().toISOString(),
-    name,
-    phone,
-    company,
-    need,
-    vision,
-    responded: false,
+  try {
+    const entry = await createMeeting({
+      id: randomUUID(),
+      createdAt: new Date().toISOString(),
+      name,
+      phone,
+      company,
+      need,
+      vision,
+      responded: false,
+    })
+
+    return NextResponse.json(entry, { status: 201 })
+  } catch (error) {
+    console.error('Failed to create meeting', error)
+    return NextResponse.json({ error: 'Could not save meeting request.' }, { status: 500 })
   }
-
-  meetings.unshift(entry)
-  writeMeetings(meetings)
-
-  return NextResponse.json(entry, { status: 201 })
 }

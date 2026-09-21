@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getBearerToken, verifyAdminToken } from '@/lib/auth'
-import { readMeetings, writeMeetings } from '@/lib/meetings'
+import { deleteMeeting, updateMeetingResponded } from '@/lib/meetings'
 
 export const runtime = 'nodejs'
 
@@ -24,21 +24,16 @@ export async function PATCH(request: Request, context: RouteContext) {
     return NextResponse.json({ error: 'responded must be a boolean.' }, { status: 400 })
   }
 
-  const meetings = readMeetings()
-  const index = meetings.findIndex((meeting) => meeting.id === id)
-  if (index < 0) {
-    return NextResponse.json({ error: 'Meeting request not found.' }, { status: 404 })
+  try {
+    const updated = await updateMeetingResponded(id, body.responded)
+    if (!updated) {
+      return NextResponse.json({ error: 'Meeting request not found.' }, { status: 404 })
+    }
+    return NextResponse.json(updated)
+  } catch (error) {
+    console.error('Failed to update meeting', error)
+    return NextResponse.json({ error: 'Could not update meeting request.' }, { status: 500 })
   }
-
-  const updated = {
-    ...meetings[index],
-    responded: body.responded,
-    respondedAt: body.responded ? new Date().toISOString() : undefined,
-  }
-
-  meetings[index] = updated
-  writeMeetings(meetings)
-  return NextResponse.json(updated)
 }
 
 export async function DELETE(request: Request, context: RouteContext) {
@@ -52,13 +47,14 @@ export async function DELETE(request: Request, context: RouteContext) {
     return NextResponse.json({ error: 'Meeting id is required.' }, { status: 400 })
   }
 
-  const meetings = readMeetings()
-  const next = meetings.filter((meeting) => meeting.id !== id)
-
-  if (next.length === meetings.length) {
-    return NextResponse.json({ error: 'Meeting request not found.' }, { status: 404 })
+  try {
+    const deleted = await deleteMeeting(id)
+    if (!deleted) {
+      return NextResponse.json({ error: 'Meeting request not found.' }, { status: 404 })
+    }
+    return NextResponse.json({ ok: true })
+  } catch (error) {
+    console.error('Failed to delete meeting', error)
+    return NextResponse.json({ error: 'Could not delete meeting request.' }, { status: 500 })
   }
-
-  writeMeetings(next)
-  return NextResponse.json({ ok: true })
 }
