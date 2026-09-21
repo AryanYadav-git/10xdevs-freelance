@@ -161,7 +161,7 @@
 
 .admin__table {
   width: 100%;
-  min-width: 720px;
+  min-width: 920px;
   border-collapse: collapse;
   font-size: 0.95rem;
 }
@@ -216,14 +216,44 @@
   text-align: right;
 }
 
+.admin__row--responded td {
+  color: color-mix(in srgb, var(--ink) 72%, var(--muted));
+}
+
+.admin__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.admin__badge--new {
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+  color: var(--primary);
+}
+
+.admin__badge--responded {
+  background: color-mix(in srgb, #1f7a4d 14%, transparent);
+  color: #1f7a4d;
+}
+
+.admin__row-actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.admin__respond,
 .admin__delete {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.45rem 0.8rem;
-  border: 1px solid color-mix(in srgb, #a11f2c 35%, var(--line));
-  background: color-mix(in srgb, #a11f2c 8%, transparent);
-  color: #a11f2c;
   font: inherit;
   font-size: 0.82rem;
   font-weight: 600;
@@ -236,11 +266,29 @@
     opacity 0.2s var(--ease);
 }
 
+.admin__respond {
+  border: 1px solid color-mix(in srgb, var(--primary) 40%, var(--line));
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  color: var(--primary);
+}
+
+.admin__respond:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+  border-color: var(--primary);
+}
+
+.admin__delete {
+  border: 1px solid color-mix(in srgb, #a11f2c 35%, var(--line));
+  background: color-mix(in srgb, #a11f2c 8%, transparent);
+  color: #a11f2c;
+}
+
 .admin__delete:hover:not(:disabled) {
   background: color-mix(in srgb, #a11f2c 16%, transparent);
   border-color: #a11f2c;
 }
 
+.admin__respond:disabled,
 .admin__delete:disabled {
   opacity: 0.65;
   cursor: wait;

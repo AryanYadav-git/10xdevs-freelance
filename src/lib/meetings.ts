@@ -9,6 +9,8 @@ export type MeetingRequest = {
   company: string
   need: string
   vision: string
+  responded: boolean
+  respondedAt?: string
 }
 
 function getMeetingsPath() {
@@ -34,7 +36,21 @@ export function readMeetings(): MeetingRequest[] {
   try {
     const raw = readFileSync(getMeetingsPath(), 'utf8')
     const parsed = JSON.parse(raw) as unknown
-    return Array.isArray(parsed) ? (parsed as MeetingRequest[]) : []
+    if (!Array.isArray(parsed)) return []
+    return parsed.map((item) => {
+      const meeting = item as Partial<MeetingRequest>
+      return {
+        id: String(meeting.id ?? ''),
+        createdAt: String(meeting.createdAt ?? ''),
+        name: String(meeting.name ?? ''),
+        phone: String(meeting.phone ?? ''),
+        company: String(meeting.company ?? ''),
+        need: String(meeting.need ?? ''),
+        vision: String(meeting.vision ?? ''),
+        responded: Boolean(meeting.responded),
+        respondedAt: meeting.respondedAt ? String(meeting.respondedAt) : undefined,
+      }
+    })
   } catch {
     return []
   }

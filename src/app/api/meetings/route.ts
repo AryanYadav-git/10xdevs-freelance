@@ -39,6 +39,7 @@ export async function POST(request: Request) {
     company,
     need,
     vision,
+    responded: false,
   }
 
   meetings.unshift(entry)

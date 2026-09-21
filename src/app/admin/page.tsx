@@ -12,6 +12,8 @@ export type MeetingRequest = {
   company: string
   need: string
   vision: string
+  responded?: boolean
+  respondedAt?: string
 }
 
 const TOKEN_KEY = 'adminToken'
@@ -45,7 +47,7 @@ export default function AdminPage() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle')
   const [error, setError] = useState('')
   const [deletingId, setDeletingId] = useState<string | null>(null)
-  const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [updatingId, setUpdatingId] = useState<string | null>(null)
 
   async function loadMeetings(authToken: string) {
     setStatus('loading')
@@ -163,6 +165,44 @@ export default function AdminPage() {
       setError(err instanceof Error ? err.message : 'Could not delete meeting request.')
     } finally {
       setDeletingId(null)
+    }
+  }
+
+  async function handleResponded(meeting: MeetingRequest, responded: boolean) {
+    setUpdatingId(meeting.id)
+    setError('')
+
+    try {
+      const response = await fetch(`/api/meetings/${meeting.id}`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ responded }),
+      })
+
+      if (response.status === 401) {
+        sessionStorage.removeItem(TOKEN_KEY)
+        setToken('')
+        setStatus('idle')
+        setLoginError('Session expired. Please sign in again.')
+        return
+      }
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null
+        throw new Error(payload?.error || 'Could not update meeting request.')
+      }
+
+      const updated = (await response.json()) as MeetingRequest
+      setMeetings((current) =>
+        current.map((item) => (item.id === meeting.id ? { ...item, ...updated } : item)),
+      )
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not update meeting request.')
+    } finally {
+      setUpdatingId(null)
     }
   }
 
@@ -299,34 +339,61 @@ export default function AdminPage() {
                   <th scope="col">Company</th>
                   <th scope="col">Need</th>
                   <th scope="col">Vision</th>
+                  <th scope="col">Status</th>
                   <th scope="col">
                     <span className="sr-only">Actions</span>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {meetings.map((meeting) => (
-                  <tr key={meeting.id}>
-                    <td>{formatDate(meeting.createdAt)}</td>
-                    <td>{meeting.name}</td>
-                    <td>
-                      <a href={`tel:${meeting.phone}`}>{meeting.phone}</a>
-                    </td>
-                    <td>{meeting.company || '—'}</td>
-                    <td>{meeting.need || '—'}</td>
-                    <td>{meeting.vision || '—'}</td>
-                    <td>
-                      <button
-                        type="button"
-                        className="admin__delete"
-                        onClick={() => void handleDelete(meeting)}
-                        disabled={deletingId === meeting.id}
-                      >
-                        {deletingId === meeting.id ? 'Deleting…' : 'Delete'}
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {meetings.map((meeting) => {
+                  const isResponded = Boolean(meeting.responded)
+                  const isBusy = deletingId === meeting.id || updatingId === meeting.id
+
+                  return (
+                    <tr key={meeting.id} className={isResponded ? 'admin__row--responded' : undefined}>
+                      <td>{formatDate(meeting.createdAt)}</td>
+                      <td>{meeting.name}</td>
+                      <td>
+                        <a href={`tel:${meeting.phone}`}>{meeting.phone}</a>
+                      </td>
+                      <td>{meeting.company || '—'}</td>
+                      <td>{meeting.need || '—'}</td>
+                      <td>{meeting.vision || '—'}</td>
+                      <td>
+                        <span
+                          className={`admin__badge ${isResponded ? 'admin__badge--responded' : 'admin__badge--new'}`}
+                        >
+                          {isResponded ? 'Responded' : 'New'}
+                        </span>
+                      </td>
+                      <td>
+                        <div className="admin__row-actions">
+                          <button
+                            type="button"
+                            className="admin__respond"
+                            onClick={() => void handleResponded(meeting, !isResponded)}
+                            disabled={isBusy}
+                          >
+                            {updatingId === meeting.id
+                              ? 'Updating…'
+                              : isResponded
+                                ? 'Mark as new'
+                                : 'Mark as responded'}
+                          </button>
+                          <button
+                            type="button"
+                            className="admin__delete"
+                            onClick={() => void handleDelete(meeting)}
+                            disabled={isBusy}
+                          >
+                            {deletingId === meeting.id ? 'Deleting…' : 'Delete'}
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                })}
               </tbody>
             </table>
           </div>
