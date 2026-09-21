@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container footer__inner">
         <p className="footer__brand">{site.name}</p>
         <p className="footer__copy">
-          © {year} · Full stack freelancing for websites, commerce, and custom apps
+          © {year} · Full-stack product agency for websites, commerce, and custom apps
         </p>
       </div>
     </footer>

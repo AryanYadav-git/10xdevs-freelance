@@ -6,7 +6,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: '10xdevs',
   description:
-    'Full-stack freelancing for brand sites, ecommerce, headless WordPress, and custom web apps.',
+    'Full-stack product agency for brand sites, ecommerce, headless WordPress, and custom web apps.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

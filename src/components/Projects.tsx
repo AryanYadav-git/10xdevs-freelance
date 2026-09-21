@@ -9,7 +9,7 @@ export function Projects() {
         <span className="section-label">Selected work</span>
         <h2 className="section-title">Recent Projects</h2>
         <p className="section-lede">
-          Selected freelancing engagements — from ecommerce redesigns to custom
+          Selected work from our agency — from ecommerce redesigns to custom
           product work with lasting operational impact.
         </p>
 
