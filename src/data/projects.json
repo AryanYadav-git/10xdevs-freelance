@@ -26,19 +26,11 @@
         "Purpose-built admin CMS for products, orders, and customers",
         "SEO-optimized product and category pages"
       ],
-    "stack": ["Next.js", "WordPress CMS", "Razorpay"],
+    "stack": ["Next.js", "CMS", "Razorpay"],
     "images": [
       {
         "src": "/phayz-home.png",
-        "alt": "Tej Computer Services homepage"
-      },
-      {
-        "src": "/tej-products.png",
-        "alt": "Tej Computer Services product listing"
-      },
-      {
-        "src": "/tej-product-details.png",
-        "alt": "Tej Computer Services product detail page"
+        "alt": "Phayz Homepage"
       }
     ]
   },
