@@ -38,7 +38,7 @@ export function Hero() {
           Launch your Website In Days, Not Months.
         </p>
         <p className="hero__lede reveal reveal-delay-3">
-          Build & Launch Website and That Actually Make Money
+          Build & Launch Website and That Actually Make Impact.
         </p>
         <div className="hero__actions reveal reveal-delay-3">
           <Link className="btn btn-primary" href={site.meetingUrl}>
