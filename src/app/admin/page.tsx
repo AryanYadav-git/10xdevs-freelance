@@ -44,6 +44,8 @@ export default function AdminPage() {
   const [meetings, setMeetings] = useState<MeetingRequest[]>([])
   const [status, setStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle')
   const [error, setError] = useState('')
+  const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
 
   async function loadMeetings(authToken: string) {
     setStatus('loading')
@@ -125,6 +127,42 @@ export default function AdminPage() {
         method: 'POST',
         headers: { Authorization: `Bearer ${authToken}` },
       }).catch(() => undefined)
+    }
+  }
+
+  async function handleDelete(meeting: MeetingRequest) {
+    const confirmed = window.confirm(
+      `Delete meeting request from ${meeting.name}? This cannot be undone.`,
+    )
+    if (!confirmed) return
+
+    setDeletingId(meeting.id)
+    setError('')
+
+    try {
+      const response = await fetch(`/api/meetings/${meeting.id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+
+      if (response.status === 401) {
+        sessionStorage.removeItem(TOKEN_KEY)
+        setToken('')
+        setStatus('idle')
+        setLoginError('Session expired. Please sign in again.')
+        return
+      }
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null
+        throw new Error(payload?.error || 'Could not delete meeting request.')
+      }
+
+      setMeetings((current) => current.filter((item) => item.id !== meeting.id))
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not delete meeting request.')
+    } finally {
+      setDeletingId(null)
     }
   }
 
@@ -261,6 +299,9 @@ export default function AdminPage() {
                   <th scope="col">Company</th>
                   <th scope="col">Need</th>
                   <th scope="col">Vision</th>
+                  <th scope="col">
+                    <span className="sr-only">Actions</span>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -274,6 +315,16 @@ export default function AdminPage() {
                     <td>{meeting.company || '—'}</td>
                     <td>{meeting.need || '—'}</td>
                     <td>{meeting.vision || '—'}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="admin__delete"
+                        onClick={() => void handleDelete(meeting)}
+                        disabled={deletingId === meeting.id}
+                      >
+                        {deletingId === meeting.id ? 'Deleting…' : 'Delete'}
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
