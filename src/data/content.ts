@@ -5,6 +5,10 @@ export const site = {
   role: 'Full Stack Developer',
   meetingUrl: '/schedule',
   location: 'Available worldwide',
+  social: {
+    facebook: 'https://www.facebook.com/10xdevs',
+    instagram: 'https://www.instagram.com/10xdevs.in/',
+  },
 }
 
 export const navLinks = [

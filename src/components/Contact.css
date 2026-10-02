@@ -1,6 +1,6 @@
 .contact__panel {
   display: grid;
-  gap: 2.5rem;
+  gap: clamp(2rem, 5vw, 3rem);
   padding: clamp(2rem, 5vw, 3rem);
   background: var(--surface-contrast);
   color: var(--surface-contrast-ink);
@@ -19,8 +19,15 @@
 .contact__actions {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1.75rem;
+  min-width: 0;
+}
+
+.contact__cta {
+  width: 100%;
+  max-width: 18rem;
 }
 
 .contact .btn-primary {
@@ -28,15 +35,79 @@
   color: var(--primary-ink);
 }
 
+.contact__meta {
+  display: grid;
+  gap: 0.85rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--surface-contrast-ink) 18%, transparent);
+}
+
+.contact__meta-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--surface-contrast-ink) 55%, transparent);
+}
+
+.contact__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.contact__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.85rem 0.45rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--surface-contrast-ink) 22%, transparent);
+  color: var(--surface-contrast-ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: border-color 0.25s var(--ease), background-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.contact__social-link svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.contact__social-link:hover {
+  background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+.contact__social-link--instagram:hover {
+  color: #e1306c;
+  border-color: #e1306c;
+  /* background: color-mix(in srgb, #e1306c 18%, transparent); */
+  /* background: white; */
+}
+
+.contact__social-link--facebook:hover {
+  color: #1877f2;
+  border-color: #1877f2;
+  background: color-mix(in srgb, #1877f2 18%, transparent);
+}
+
 .contact__note {
+  margin: 0;
   font-size: 0.92rem;
   color: color-mix(in srgb, var(--surface-contrast-ink) 60%, transparent);
 }
 
 @media (min-width: 860px) {
   .contact__panel {
-    grid-template-columns: 1.2fr 0.8fr;
-    align-items: end;
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1.15fr) minmax(14rem, 0.75fr);
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .contact__actions {
+    padding-left: clamp(1.5rem, 3vw, 2.25rem);
+    /* border-left: 1px solid color-mix(in srgb, var(--surface-contrast-ink) 18%, transparent); */
   }
 }
