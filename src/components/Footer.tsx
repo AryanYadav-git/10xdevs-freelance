@@ -1,4 +1,5 @@
-import { site } from '@/data/content'
+import Link from 'next/link'
+import { navLinks, site } from '@/data/content'
 import './Footer.css'
 
 export function Footer() {
@@ -11,6 +12,14 @@ export function Footer() {
         <p className="footer__copy">
           © {year} · Full-stack product agency for websites, commerce, and custom apps
         </p>
+        <nav className="footer__links" aria-label="Footer">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href}>
+              {link.label}
+            </Link>
+          ))}
+          <Link href={site.meetingUrl}>Schedule a meeting</Link>
+        </nav>
       </div>
     </footer>
   )

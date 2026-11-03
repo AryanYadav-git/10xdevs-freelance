@@ -23,7 +23,20 @@
 @media (min-width: 720px) {
   .footer__inner {
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
+    gap: 0.5rem 2rem;
   }
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  font-size: 0.92rem;
+}
+
+.footer__links a:hover {
+  color: var(--primary);
 }

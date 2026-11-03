@@ -10,6 +10,7 @@ export function Hero() {
           className="hero__image"
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80"
           alt=""
+          fetchPriority="high"
         />
         <div className="hero__veil" />
       </div>
@@ -33,6 +34,7 @@ export function Hero() {
 
         <h1 id="hero-brand" className="hero__brand reveal reveal-delay-1">
           {site.name}
+          <span className="sr-only"> | Full-Stack Web Development Agency</span>
         </h1>
         <p className="hero__tagline reveal reveal-delay-2">
           Launch your Website In Days, Not Months.

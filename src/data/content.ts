@@ -2,7 +2,25 @@ import projectsData from './projects.json'
 
 export const site = {
   name: '10xdevs',
+  legalName: '10xdevs',
   role: 'Full Stack Developer',
+  // Set NEXT_PUBLIC_SITE_URL in production to your real canonical domain.
+  url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://agency.10xdevs.in').replace(/\/+$/, ''),
+  tagline: 'Launch your website in days, not months.',
+  description:
+    '10xdevs is a full-stack web development agency building fast Next.js websites, ecommerce stores, headless WordPress frontends, custom web apps, and AI agents for businesses worldwide.',
+  keywords: [
+    'web development agency',
+    'full-stack development agency',
+    'Next.js development agency',
+    'ecommerce website development',
+    'headless WordPress developer',
+    'custom web app development',
+    'AI agent development',
+    'website redesign',
+    'hire Next.js developers',
+    'freelance full stack developer',
+  ],
   meetingUrl: '/schedule',
   location: 'Available worldwide',
   social: {
@@ -90,5 +108,43 @@ export const approachPoints = [
   {
     title: 'Clear ownership',
     text: 'From architecture to deploy, you get one accountable builder — fewer handoffs, tighter feedback loops.',
+  },
+] as const
+
+export const faqs = [
+  {
+    question: 'What does 10xdevs do?',
+    answer:
+      '10xdevs is a full-stack web development agency. We design and build brand websites, ecommerce stores, headless WordPress frontends in Next.js, custom web apps and internal tools, and AI agents that plug into your product or operations.',
+  },
+  {
+    question: 'How fast can 10xdevs launch my website?',
+    answer:
+      'Our goal is to launch websites in days, not months. Timelines depend on scope: a focused brand site can go live far faster than a custom ecommerce platform or web app. We map the scope in the first conversation and give you a clear path to launch.',
+  },
+  {
+    question: 'Which technologies does 10xdevs use?',
+    answer:
+      'Our core stack is Next.js, React, and TypeScript, with headless CMS setups (including WordPress), custom admin dashboards, and payment integrations such as Razorpay. We choose the stack that fits your product rather than forcing a template.',
+  },
+  {
+    question: 'Can you rebuild my existing WordPress site?',
+    answer:
+      'Yes. We keep WordPress as the content backend your team already knows and rebuild the frontend in Next.js for better speed, UX, and SEO, without forcing a content migration.',
+  },
+  {
+    question: 'Do you build ecommerce stores with custom features?',
+    answer:
+      'Yes. Past work includes a custom storefront with an in-house product customization tool, webhook-verified Razorpay payments, and a purpose-built admin CMS, as well as an ecommerce redesign for an established computer services business.',
+  },
+  {
+    question: 'Do you build AI agents?',
+    answer:
+      'Yes. We build custom AI agents wired into your product or operations, with tools, defined workflows, and handoff to a human where it matters.',
+  },
+  {
+    question: 'Where does 10xdevs work, and how do I get started?',
+    answer:
+      'We work with clients worldwide. Schedule a meeting, share your product, timeline, and constraints, and we will scope the right architecture and a clear path to launch. There is no rate sheet, just a focused conversation.',
   },
 ] as const
