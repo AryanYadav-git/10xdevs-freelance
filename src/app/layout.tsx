@@ -2,11 +2,12 @@ import type { Metadata, Viewport } from 'next'
 import { Footer } from '@/components/Footer'
 import { JsonLd } from '@/components/JsonLd'
 import { Nav } from '@/components/Nav'
+import { RevealObserver } from '@/components/RevealObserver'
 import { site } from '@/data/content'
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 import './globals.css'
 
-const defaultTitle = `${site.name} | Full-Stack Web Development Agency`
+const defaultTitle = `${site.name} | Website Design & E-commerce Agency for Ambitious Brands`
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
-  category: 'technology',
+  category: 'design',
   alternates: {
     canonical: '/',
   },
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main>{children}</main>
         <Footer />
+        <RevealObserver />
       </body>
     </html>
   )

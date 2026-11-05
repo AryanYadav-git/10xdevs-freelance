@@ -8,18 +8,23 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="container footer__inner">
-        <p className="footer__brand">{site.name}</p>
-        <p className="footer__copy">
-          © {year} · Full-stack product agency for websites, commerce, and custom apps
-        </p>
+        <div className="footer__lead">
+          <p className="footer__brand">{site.name}</p>
+          <p className="footer__tagline">{site.tagline}</p>
+        </div>
+
         <nav className="footer__links" aria-label="Footer">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}>
               {link.label}
             </Link>
           ))}
-          <Link href={site.meetingUrl}>Schedule a meeting</Link>
+          <Link href={site.meetingUrl}>{site.ctaLabel}</Link>
         </nav>
+
+        <p className="footer__copy">
+          © {year} {site.name}. Website design and e-commerce for ambitious brands.
+        </p>
       </div>
     </footer>
   )

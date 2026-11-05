@@ -1,4 +1,4 @@
-import { approachPoints, faqs, projects, services, site } from '@/data/content'
+import { about, approachSteps, faqs, projects, services, site, whyUs } from '@/data/content'
 
 export const dynamic = 'force-static'
 
@@ -9,7 +9,12 @@ export function GET() {
     '',
     `> ${site.description}`,
     '',
-    `${site.name} launches websites in days, not months. We work with clients worldwide, with one accountable team from architecture to deploy.`,
+    `${site.tagline} ${site.message}`,
+    '',
+    `Who we work with: ${site.audience}. ${site.location}.`,
+    '',
+    '## About',
+    ...about.paragraphs,
     '',
     '## Services',
     ...services.map((service) => `- ${service.title}: ${service.description}`),
@@ -20,13 +25,16 @@ export function GET() {
         `- [${project.title}](${site.url}/work/${project.id}): ${project.category}, ${project.year}. ${project.summary}`,
     ),
     '',
-    '## Approach',
-    ...approachPoints.map((point) => `- ${point.title}: ${point.text}`),
+    '## Our approach',
+    ...approachSteps.map((step, index) => `${index + 1}. ${step.title} ${step.text}`),
+    '',
+    '## Why work with us',
+    ...whyUs.map((point) => `- ${point.title} ${point.text}`),
     '',
     '## FAQ',
     ...faqs.flatMap((faq) => [`### ${faq.question}`, faq.answer, '']),
     '## Contact',
-    `- [Schedule a meeting](${site.url}${site.meetingUrl})`,
+    `- [${site.ctaLabel}](${site.url}${site.meetingUrl})`,
     ...Object.entries(site.social).map(([name, url]) => `- ${name}: ${url}`),
     '',
     '## Pages',

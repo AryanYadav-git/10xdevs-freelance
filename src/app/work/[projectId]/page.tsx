@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return {}
 
   const title = `${project.title}: ${project.category} Case Study`
-  const description = plainText(`${project.summary} Built by ${site.name} with ${project.stack.join(', ')}.`, 200)
+  const description = plainText(`${project.summary} A ${project.category.toLowerCase()} project by ${site.name}.`, 200)
   const path = `/work/${project.id}`
   const images = project.images.map((image) => ({
     url: absoluteUrl(image.src),
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    keywords: [...project.services, ...project.stack, project.category, 'case study'],
+    keywords: [...project.services, project.category, 'case study'],
     alternates: { canonical: path },
     openGraph: {
       type: 'article',

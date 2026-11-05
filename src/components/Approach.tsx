@@ -1,28 +1,32 @@
-import { approachPoints } from '@/data/content'
+import { approachSteps } from '@/data/content'
 import './Approach.css'
 
 export function Approach() {
   return (
-    <section className="section approach" id="approach">
-      <div className="container approach__grid">
-        <div className="approach__intro">
-          <span className="section-label">Approach</span>
-          <h2 className="section-title">Built with a designer’s eye</h2>
-          <p className="section-lede">
-            Design is part of how I think, not a separate service I sell. You get
-            interfaces that feel considered — while the engagement stays focused on
-            robust full-stack delivery.
-          </p>
-        </div>
+    <section className="section approach" id="approach" aria-labelledby="approach-title">
+      <div className="container">
+        <span className="section-label" data-index="04">
+          Our approach
+        </span>
+        <h2 id="approach-title" className="section-title">
+          From first conversation to launch, and beyond.
+        </h2>
 
-        <ul className="approach__list">
-          {approachPoints.map((point) => (
-            <li key={point.title}>
-              <h3>{point.title}</h3>
-              <p>{point.text}</p>
+        <ol className="approach__steps">
+          {approachSteps.map((step, index) => (
+            <li
+              key={step.title}
+              data-reveal
+              style={{ '--reveal-delay': `${index * 0.08}s` } as React.CSSProperties}
+            >
+              <span className="approach__num" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </section>
   )

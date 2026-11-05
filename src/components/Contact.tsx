@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { site } from '@/data/content'
+import { finalCta, site } from '@/data/content'
 import './Contact.css'
 
 function InstagramIcon() {
@@ -34,21 +34,18 @@ function FacebookIcon() {
 
 export function Contact() {
   return (
-    <section className="section contact" id="contact">
-      <div className="container contact__panel">
+    <section className="section contact" id="contact" aria-labelledby="contact-title">
+      <div className="container contact__panel" data-reveal>
         <div className="contact__copy">
-          <span className="section-label">Contact</span>
-          <h2 className="section-title contact__title">Let’s scope the next build</h2>
-          <p className="section-lede">
-            Share the product, timeline, and constraints. We’ll map the right
-            architecture and a clear path to launch — no rate sheet, just a focused
-            conversation.
-          </p>
+          <h2 id="contact-title" className="section-title contact__title">
+            {finalCta.title}
+          </h2>
+          <p className="section-lede">{finalCta.subheading}</p>
         </div>
 
         <div className="contact__actions">
-          <Link className="btn btn-primary contact__cta" href={site.meetingUrl}>
-            Schedule a meeting
+          <Link className="btn btn-primary btn-lg btn-arrow contact__cta" href={site.meetingUrl}>
+            {finalCta.cta}
           </Link>
 
           <div className="contact__meta">

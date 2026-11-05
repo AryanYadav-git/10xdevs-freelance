@@ -1,32 +1,38 @@
 [
   {
-    
-      "id": "phayz",
-      "title": "PHAYZ",
-      "category": "E-commerce",
-      "year": "2026",
-      "client": "PHAYZ",
-      "summary": "A custom Next.js storefront for a t-shirt and hoodie brand, built with an in-house product customization tool, Razorpay payments, and a purpose-built admin CMS for catalog, orders, and customer management.",
-      "services": [
-        "Full-Stack Development",
-        "Custom Admin CMS",
-        "Payment Integration",
-        "Product Customization Tool"
-      ],
-      "challenge": "The brand needed more than a standard storefront — customers wanted to personalize hoodies with their own designs across front, back, and side print zones. Off-the-shelf platforms couldn't support this without heavy workarounds, and a generic CMS wasn't flexible enough for a product catalog built around configurable print zones and customer uploads.",
-      "solution": "I built the storefront end-to-end in Next.js, with a canvas-based customization tool letting customers upload, position, rotate, and flip artwork within fixed print zones per garment. Payments run through Razorpay with webhook-verified order confirmation, automatic invoicing, and email notifications. A custom admin CMS handles the full operational surface — products, images, pricing, customer records, orders, wishlists, tags, and payment reconciliation.",
-      "impact": [
-        "A customization flow customers can use without design experience",
-        "Reliable payment-to-fulfillment pipeline with webhook-verified order status",
-        "Single admin dashboard covering catalog, orders, and customers",
-        "A reusable CMS architecture ready to extend to future client projects"
-      ],
-      "outcomes": [
-        "Razorpay payment flow with webhook verification and automated invoicing",
-        "Purpose-built admin CMS for products, orders, and customers",
-        "SEO-optimized product and category pages"
-      ],
-    "stack": ["Next.js", "CMS", "Razorpay"],
+    "id": "phayz",
+    "title": "PHAYZ",
+    "category": "Online store",
+    "year": "2026",
+    "client": "PHAYZ",
+    "summary": "An online store for a t-shirt and hoodie brand, where customers design their own pieces before they buy. We gave PHAYZ a storefront that feels like the brand, and a simple way to run the business behind it.",
+    "services": [
+      "Online store",
+      "Product personalisation",
+      "Order and customer management",
+      "Secure online payments"
+    ],
+    "challenge": "PHAYZ wanted customers to personalise hoodies with their own artwork, across the front, back and sides. A standard online store couldn't offer that experience, and the team needed one place to manage products, orders and customers without relying on workarounds.",
+    "solution": "We created a custom storefront that lets customers upload their artwork, position it on the garment and see exactly what they are ordering. Checkout is simple and secure, with confirmations and invoices sent automatically. Behind the scenes, we built a dashboard where the team manages the catalogue, pricing, orders and customers in one place.",
+    "impact": [
+      "Customers can personalise a product without any design experience",
+      "Orders flow from payment to fulfilment with clear status at every step",
+      "One dashboard for the catalogue, orders and customers",
+      "A foundation the brand can keep building on as the range grows"
+    ],
+    "outcomes": [
+      "A product personalisation experience made for the brand's customers",
+      "Secure checkout with automatic order confirmations and invoices",
+      "A simple dashboard for products, orders and customers"
+    ],
+    "technical": [
+      "Custom storefront built in Next.js",
+      "Canvas-based design tool with fixed print zones per garment",
+      "Razorpay payments with webhook-verified order confirmation",
+      "Purpose-built admin CMS for catalogue, orders and customers",
+      "Search-friendly product and category pages"
+    ],
+    "stack": ["Next.js", "Razorpay"],
     "images": [
       {
         "src": "/phayz-home.png",
@@ -37,30 +43,35 @@
   {
     "id": "tejcomputer-redesign",
     "title": "Tej Computer Services",
-    "category": "E-commerce redesign",
+    "category": "Website redesign and online store",
     "year": "2026",
     "client": "Tej Computer Services",
-    "summary": "One of the Largest trusted distributors for premium computer hardware, gaming accessories and tech solutions in the entire state of Jharkhand, India",
+    "summary": "A redesigned online store for one of Jharkhand's largest trusted distributors of premium computer hardware, gaming accessories and tech solutions. We made it faster and clearer for shoppers, without disrupting how the team works.",
     "services": [
-      "Redesign",
-      "Headless WordPress Backend",
-      "Next.js storefront",
-      "Checkout UX"
+      "Website redesign",
+      "Online store",
+      "Shopping and checkout experience"
     ],
-    "challenge": "The WordPress theme was slow, hard to extend, and fighting the brand. Merchandisers relied on familiar CMS workflows, but shoppers hit sluggish pages and a confusing path to purchase. A full platform migration was off the table — content and catalog needed to stay in WordPress.",
-    "solution": "WordPress stayed as the backend for products, content, and editorial control. I rebuilt the customer-facing experience in Next.js with synced catalog data, clearer product discovery, and a tighter checkout path. The team kept their publishing habits; customers got a faster, calmer storefront.",
+    "challenge": "The existing website was slow, hard to extend and didn't reflect the standing of the business. Shoppers found it difficult to discover products and reach checkout, while the team depended on familiar content workflows that couldn't be thrown away.",
+    "solution": "We rebuilt the customer-facing experience around clearer product discovery, calmer pages and a tighter path to purchase. The team keeps managing products and content the way they always have, while shoppers get a faster, more confident experience that matches the brand's reputation.",
     "impact": [
-      "Noticeably faster browse and product pages",
-      "Clearer path from discovery to checkout",
-      "Merchandising workflows unchanged for the client team",
-      "A frontend stack ready for future campaigns and A/B tests"
+      "Faster browsing and product pages",
+      "A clearer path from discovery to checkout",
+      "The team's day-to-day workflow stays unchanged",
+      "A solid base for future campaigns and promotions"
     ],
     "outcomes": [
-      "Headless WordPress content and catalog sync",
-      "Faster product discovery and checkout path",
-      "CMS workflows unchanged for the client team"
+      "A redesigned storefront that reflects the brand's standing",
+      "Easier product discovery and a simpler checkout path",
+      "No disruption to how the team manages the catalogue"
     ],
-    "stack": ["Next.js", "WordPress CMS", "Razorpay"],
+    "technical": [
+      "Headless WordPress backend retained for products and content",
+      "Customer-facing storefront rebuilt in Next.js",
+      "Catalogue data synced from WordPress",
+      "Razorpay payment integration"
+    ],
+    "stack": ["Next.js", "WordPress", "Razorpay"],
     "images": [
       {
         "src": "/tej-home.png",
@@ -82,27 +93,31 @@
     "category": "Brand website",
     "year": "2026",
     "client": "Kanke General Hospital & Research Centre",
-    "summary": "A modern hospital website focused on trust, clarity, and conversion — with a prominent appointment path, department discovery, and content the clinical team can keep current.",
+    "summary": "A brand website for a hospital, designed to build trust at first glance and make it easy for patients to find the right care and book an appointment.",
     "services": [
       "Brand website",
-      "Appointment UX",
-      "CMS content architecture",
-      "Responsive UI"
+      "Appointment and enquiry experience",
+      "Responsive design"
     ],
-    "challenge": "The hospital needed a digital presence that felt as capable as their care — not a generic template. Patients had to find doctors, services, and a clear way to book or enquire quickly, while staff needed a site that stayed professional across mobile and desktop without constant developer edits for routine updates.",
-    "solution": "I designed and built a dark, cinematic healthcare site with a strong hero, glass-style enquiry form, and direct appointment CTAs. Navigation covers departments, doctors, gallery, and contact in a calm hierarchy. The layout emphasizes immediate action — book or submit a query — while imagery and typography establish clinical trust.",
+    "challenge": "The hospital needed a digital presence that felt as capable as its care, not a generic template. Patients had to find doctors and services quickly and see a clear way to book or enquire, while staff needed a site that stayed professional without constant help for routine updates.",
+    "solution": "We designed a calm, cinematic healthcare website with a strong opening, a simple enquiry form and appointment actions within easy reach. Departments, doctors, gallery and contact details are organised so patients always know where to go next, and the imagery and typography carry the clinical trust the hospital stands for.",
     "impact": [
-      "Clear first-screen path to book or enquire",
-      "Mobile-ready experience for patients searching on the go",
+      "A clear first-screen path to book or enquire",
+      "A comfortable experience for patients searching on their phones",
       "A visual identity that matches modern hospital standards",
-      "Structured pages ready for doctors, services, and content growth"
+      "Pages ready to grow with new doctors, services and content"
     ],
     "outcomes": [
-      "Hero-led brand site with appointment and enquiry flows",
-      "Department and doctor-focused information architecture",
-      "Polished responsive UI tuned for healthcare trust"
+      "A brand-led website with clear appointment and enquiry actions",
+      "Departments and doctors organised so patients can find care quickly",
+      "A polished design that works on every screen"
     ],
-    "stack": ["Next.js", "TypeScript", "CMS"],
+    "technical": [
+      "Built in Next.js and TypeScript",
+      "Structured content so staff can keep information current",
+      "Fully responsive layouts"
+    ],
+    "stack": ["Next.js", "TypeScript"],
     "images": [
       {
         "src": "/kghrc.png",

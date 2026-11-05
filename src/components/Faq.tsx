@@ -6,12 +6,14 @@ export function Faq() {
     <section className="section faq" id="faq" aria-labelledby="faq-title">
       <div className="container faq__grid">
         <div className="faq__intro">
-          <span className="section-label">FAQ</span>
+          <span className="section-label" data-index="06">
+            FAQ
+          </span>
           <h2 id="faq-title" className="section-title">
-            Questions clients ask before they build
+            Good questions to ask before you start.
           </h2>
           <p className="section-lede">
-            Straight answers on how we work, what we build, and how fast we can launch.
+            Straight answers on cost, timelines and how we work.
           </p>
         </div>
 

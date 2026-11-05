@@ -37,7 +37,39 @@
 }
 
 .schedule__title {
-  max-width: 12ch;
+  max-width: 11ch;
+}
+
+.schedule__steps {
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+  color: var(--muted);
+}
+
+.schedule__steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.schedule__steps li::before {
+  content: '0' counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.schedule__steps strong {
+  color: var(--ink);
 }
 
 .schedule__form,
@@ -78,6 +110,7 @@
 }
 
 .schedule__field input,
+.schedule__field select,
 .schedule__field textarea {
   width: 100%;
   padding: 0.9rem 1rem;
@@ -96,6 +129,7 @@
 }
 
 .schedule__field input:focus,
+.schedule__field select:focus,
 .schedule__field textarea:focus {
   outline: none;
   border-color: var(--primary);

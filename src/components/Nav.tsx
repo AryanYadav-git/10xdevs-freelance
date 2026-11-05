@@ -17,6 +17,10 @@ export function Nav() {
             </Link>
           ))}
         </nav>
+
+        <Link className="nav__cta" href={site.meetingUrl}>
+          {site.ctaLabel}
+        </Link>
       </div>
     </header>
   )

@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { site } from '@/data/content'
+import { hero, site } from '@/data/content'
 import './Hero.css'
 
 export function Hero() {
   return (
-    <section className="hero" id="top" aria-labelledby="hero-brand">
+    <section className="hero" id="top" aria-labelledby="hero-title">
       <div className="hero__plane" aria-hidden="true">
         <img
           className="hero__image"
@@ -16,39 +16,23 @@ export function Hero() {
       </div>
 
       <div className="hero__content container">
-        <a className="hero__announce reveal" href="/#services">
-          <span className="hero__announce-label">Introducing Support for AI</span>
-          <span className="hero__announce-divider" aria-hidden="true" />
-          <span className="hero__announce-action" aria-hidden="true">
-            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M3.5 8h9M8.5 4l4 4-4 4"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
-        </a>
+        <p className="hero__eyebrow reveal">{hero.headline}</p>
 
-        <h1 id="hero-brand" className="hero__brand reveal reveal-delay-1">
+        <h1 id="hero-title" className="hero__title reveal reveal-delay-1">
           {site.name}
-          <span className="sr-only"> | Full-Stack Web Development Agency</span>
+          <span className="sr-only"> | Website Design &amp; E-commerce Agency</span>
         </h1>
-        <p className="hero__tagline reveal reveal-delay-2">
-          Launch your Website In Days, Not Months.
-        </p>
-        <p className="hero__lede reveal reveal-delay-3">
-          Build & Launch Website and That Actually Make Impact.
-        </p>
-        <div className="hero__actions reveal reveal-delay-3">
-          <Link className="btn btn-primary" href={site.meetingUrl}>
-            Schedule a meeting
-          </Link>
-          <a className="btn btn-ghost hero__ghost" href="/#work">
-            View selected work
-          </a>
+
+        <div className="hero__row">
+          <p className="hero__lede reveal reveal-delay-2">{hero.subheading}</p>
+          <div className="hero__actions reveal reveal-delay-3">
+            <Link className="btn btn-primary btn-lg btn-arrow" href={site.meetingUrl}>
+              {hero.primaryCta}
+            </Link>
+            <a className="btn btn-ghost btn-lg hero__ghost" href="/#work">
+              {hero.secondaryCta}
+            </a>
+          </div>
         </div>
       </div>
     </section>

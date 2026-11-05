@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import { site } from '@/data/content'
 
 export const metadata: Metadata = {
-  title: 'Schedule a Meeting: Start Your Website or App Project',
-  description: `Book a free intro call with ${site.name}. Tell us what you're building (website, ecommerce store, headless WordPress, custom web app, or AI agent) and we'll scope a clear path to launch.`,
+  title: 'Start a Project: Website Design & E-commerce Enquiry',
+  description: `Start a project with ${site.name}. Tell us about your brand and whether you need a brand website, an online store, a redesign or a custom digital experience.`,
   alternates: { canonical: '/schedule' },
   openGraph: {
     url: '/schedule',
-    title: `Schedule a Meeting | ${site.name}`,
-    description: `Tell ${site.name} what you're building and book a focused scoping conversation.`,
+    title: `Start a Project | ${site.name}`,
+    description: `Tell ${site.name} about your brand and get a clear proposal.`,
   },
 }
 

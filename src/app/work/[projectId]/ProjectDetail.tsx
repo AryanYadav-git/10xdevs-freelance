@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { site, type Project } from '@/data/content'
+import { projects, site, type Project } from '@/data/content'
 import './project-detail.css'
 
 export function ProjectDetail({ project }: { project: Project }) {
@@ -13,6 +13,8 @@ export function ProjectDetail({ project }: { project: Project }) {
     setActiveIndex(0)
   }, [project.id])
 
+  const currentIndex = projects.findIndex((item) => item.id === project.id)
+  const nextProject = projects[(currentIndex + 1) % projects.length]
   const activeImage = project.images[activeIndex] ?? project.images[0]
 
   return (
@@ -87,17 +89,17 @@ export function ProjectDetail({ project }: { project: Project }) {
 
       <div className="container case__body">
         <section className="case__block">
-          <h2>Challenge</h2>
+          <h2>The brief</h2>
           <p>{project.challenge}</p>
         </section>
 
         <section className="case__block">
-          <h2>Solution</h2>
+          <h2>What we created</h2>
           <p>{project.solution}</p>
         </section>
 
         <section className="case__block case__impact">
-          <h2>Impact</h2>
+          <h2>Value delivered</h2>
           <ul>
             {project.impact.map((item) => (
               <li key={item}>{item}</li>
@@ -105,12 +107,31 @@ export function ProjectDetail({ project }: { project: Project }) {
           </ul>
         </section>
 
+        {project.technical.length > 0 && (
+          <details className="case__tech">
+            <summary>Technical details</summary>
+            <ul>
+              {project.technical.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </details>
+        )}
+
         <div className="case__cta">
-          <p>Have a similar build in mind?</p>
-          <Link className="btn btn-primary" href={site.meetingUrl}>
-            Schedule a meeting
+          <div>
+            <p>Have a brand worth building?</p>          </div>
+          <Link className="btn btn-primary btn-lg btn-arrow" href={site.meetingUrl}>
+            {site.ctaLabel}
           </Link>
         </div>
+
+        {nextProject && nextProject.id !== project.id && (
+          <Link className="case__next" href={`/work/${nextProject.id}`}>
+            <span>Next project</span>
+            <strong>{nextProject.title}</strong>
+          </Link>
+        )}
       </div>
     </article>
   )
