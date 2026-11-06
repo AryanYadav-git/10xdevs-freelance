@@ -39,7 +39,7 @@ export function GET() {
     '',
     '## Pages',
     `- [Home](${site.url})`,
-    `- [Sitemap](${site.url}/sitemap.xml)`,
+    `- [Sitemap](${site.url}/sitemap-pages.xml)`,
     '',
   ]
 

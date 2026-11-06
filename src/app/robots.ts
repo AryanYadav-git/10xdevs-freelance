@@ -27,7 +27,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: '*', allow: '/', disallow },
       { userAgent: aiCrawlers, allow: '/', disallow },
     ],
-    sitemap: `${site.url}/sitemap.xml`,
+    sitemap: `${site.url}/sitemap-pages.xml`,
     host: site.url,
   }
 }
